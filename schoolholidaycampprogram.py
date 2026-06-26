@@ -106,7 +106,7 @@ while True:
     print(f"days spent : {selected_camp['days']}")
     print(f"food : {meal}")
     print(f"shuttle : {'yes' if shuttle else 'no'}")
-    print(f"total price : $$${total_cost}")
+    print(f"total price : ${total_cost}")
 
     if attendence_confirm():
 
@@ -123,21 +123,22 @@ while True:
         campers.append(camper)
 
         print("attendence confirmed and saved")
-    else: ("attendence unfonfirmed and unsaved")
+    else: print("attendence unfonfirmed and unsaved")
     again = input("\nRegister another camper? (yes/no): ").lower()
 
-    if again == "yes":
+    if again == "no":
         break
 
 with open("camp_registrations.txt", "w") as file:
     for camper in campers:
-        file.write("\nregistratyion suumary")
-        file.write(f"name : {name}")
-        file.write(f"age : {age}")
-        file.write(f"camp : {selected_camp['name']}")
-        file.write(f"days spent : {selected_camp['days']}")
-        file.write(f"food : {meal}")
-        file.write(f"shuttle : {'yes' if shuttle else 'no'}")
-        file.write(f"total price : $$${total_cost}")
-
+        file.write("Registration Summary\n")
+        file.write(f"name: {camper['name']}\n")
+        file.write(f"age: {camper['age']}\n")
+        file.write(f"camp: {camper['camp']}\n")
+        file.write(f"days: {camper['days']}\n")
+        file.write(f"meal: {camper['meal']}\n")
+        file.write(f"shuttle: {'Yes' if camper['shuttle'] else 'No'}\n")
+        file.write(f"total cost: ${camper['total_cost']}\n")
+        file.write(f"\n")
+        
 print(f"\n{len(campers)} confirmed registrations saved to camp_registrations.txt")
